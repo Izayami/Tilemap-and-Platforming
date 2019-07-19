@@ -67,7 +67,7 @@ if (lives <= 0)
 loseText.text = "You Lose!";
 
 countText.text = "Count:" + count.ToString();
-if (count >= 4)
+if (count >= 8)
 winText.text = "You Win!";
                 }
                 
