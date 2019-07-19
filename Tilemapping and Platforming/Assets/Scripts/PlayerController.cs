@@ -7,12 +7,17 @@ public class PlayerController : MonoBehaviour{
 private Rigidbody2D rb2d;
 public float speed;
 public float jumpForce;
-
 public Text countText;
+
+public Text livesText;
+
+public Text loseText;
 
 public Text winText;
 
 private int count;
+
+private int lives;
 
 
 void Start () {
@@ -21,6 +26,9 @@ void Start () {
     count = 0;
 
     winText.text = "";
+    loseText.text = "";
+
+    lives = 3;
 
 }
 void Update(){
@@ -34,6 +42,9 @@ void FixedUpdate()
     float moveHorizontal = Input.GetAxis("Horizontal");
     Vector2 movement = new Vector2(moveHorizontal, 0);
     rb2d.AddForce(movement * speed);
+{
+
+}
 }
 void OnTriggerEnter2D(Collider2D other)
 {
@@ -43,12 +54,24 @@ void OnTriggerEnter2D(Collider2D other)
                      count = count + 1;
                      SetCountText();
                 }
+                else{
+                    other.gameObject.CompareTag("Enemy");
+                    other.gameObject.SetActive(false);
+                    lives = lives - 1;
+                    SetCountText();
+                }
                 void SetCountText()
                 {
+livesText.text = "Lives:" + lives.ToString();
+if (lives <= 0)
+loseText.text = "You Lose!";
+
 countText.text = "Count:" + count.ToString();
 if (count >= 4)
 winText.text = "You Win!";
                 }
+                
+              
 }
 void OnCollisionStay2D(Collision2D collision)
 {
