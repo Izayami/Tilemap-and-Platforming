@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Sky
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -50,4 +52,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3841469637
+    locked: 0
+  - name: Platform
+    uniqueID: 1515289943
     locked: 0
