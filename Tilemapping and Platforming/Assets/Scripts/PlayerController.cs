@@ -79,8 +79,9 @@ void OnCollisionStay2D(Collision2D collision)
 if(Input.GetKey(KeyCode.UpArrow)){
     rb2d.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 }
-
 {
+    if (count == 4)
+    transform.position = new Vector3(18.5f, transform.position.y,-2.5f); 
 }
     }
 }
