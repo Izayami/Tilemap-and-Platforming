@@ -19,6 +19,12 @@ private int count;
 
 private int lives;
 
+public AudioClip MusicClip;
+
+public AudioSource MusicSource;
+
+Animator anim;
+
 
 void Start () {
     rb2d = GetComponent<Rigidbody2D>();
@@ -29,10 +35,32 @@ void Start () {
     loseText.text = "";
 
     lives = 3;
+    MusicSource.clip=MusicClip; 
+
+    anim = GetComponent<Animator>();
 
 }
-void Update(){
-
+void Update()
+{
+    if (Input.GetKeyDown (KeyCode.LeftArrow))
+    {
+        anim.SetInteger("State",1);
+    }
+    if(Input.GetKeyUp(KeyCode.LeftArrow))
+    {
+        anim.SetInteger("State",0);
+    }
+    if (Input.GetKeyDown (KeyCode.RightArrow))
+    {
+        anim.SetInteger("State",1);
+    }
+    if(Input.GetKeyUp(KeyCode.RightArrow))
+    {
+        anim.SetInteger("State",0);
+    }
+    
+if(count == 4)
+MusicSource.Play();
 }
 void FixedUpdate()
 {
@@ -81,7 +109,8 @@ if(Input.GetKey(KeyCode.UpArrow)){
 }
 {
     if (count == 4)
-    transform.position = new Vector3(18.5f, transform.position.y,-2.5f); 
+    
+    transform.position = new Vector3(18.5f, -2.5f,transform.position.z); 
 }
     }
 }
