@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour{
+
 private Rigidbody2D rb2d;
 public float speed;
 public float jumpForce;
@@ -19,13 +20,6 @@ private int count;
 
 private int lives;
 
-public AudioClip MusicClip;
-
-public AudioSource MusicSource;
-
-Animator anim;
-
-
 void Start () {
     rb2d = GetComponent<Rigidbody2D>();
 
@@ -34,33 +28,11 @@ void Start () {
     winText.text = "";
     loseText.text = "";
 
-    lives = 3;
-    MusicSource.clip=MusicClip; 
-
-    anim = GetComponent<Animator>();
+    lives = 3; 
 
 }
 void Update()
 {
-    if (Input.GetKeyDown (KeyCode.LeftArrow))
-    {
-        anim.SetInteger("State",1);
-    }
-    if(Input.GetKeyUp(KeyCode.LeftArrow))
-    {
-        anim.SetInteger("State",0);
-    }
-    if (Input.GetKeyDown (KeyCode.RightArrow))
-    {
-        anim.SetInteger("State",1);
-    }
-    if(Input.GetKeyUp(KeyCode.RightArrow))
-    {
-        anim.SetInteger("State",0);
-    }
-    
-if(count == 4)
-MusicSource.Play();
 }
 void FixedUpdate()
 {
@@ -95,7 +67,7 @@ if (lives <= 0)
 loseText.text = "You Lose!";
 
 countText.text = "Count:" + count.ToString();
-if (count >= 8)
+if (count >= 4)
 winText.text = "You Win!";
                 }
                 
